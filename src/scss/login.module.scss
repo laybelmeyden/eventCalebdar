@@ -1,0 +1,5 @@
+$a100: 100vh;
+$a64: 64px;
+.centered{
+    height: calc(#{$a100} - #{$a64});
+}
