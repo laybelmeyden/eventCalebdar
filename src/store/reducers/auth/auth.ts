@@ -1,24 +1,27 @@
+import { IUuser } from './../../../models/IUuser';
 import { AuthAction, AuthActionEnum, AuthState } from "./types";
 const initialState: AuthState = {
     isAuth: false,
-    counter: 0
+    users: {} as IUuser,
+    error: '',
+    isLoading: false
 }
 
 const authReducer = (state = initialState, action: AuthAction): AuthState => {
     switch (action.type) {
         case AuthActionEnum.SET_AUTH:
-            return { ...state, isAuth: action.payload }
-        case AuthActionEnum.SET_COUNT:
-            return { ...state, counter: action.payload + 1 }
+            return { ...state, isAuth: action.payload, isLoading: false  }
+        case AuthActionEnum.SET_ERROR:
+            return { ...state, error: action.payload, isLoading: false }
+        case AuthActionEnum.SET_LOADING:
+            return { ...state, isLoading: action.payload }
+        case AuthActionEnum.SET_USER:
+            return { ...state, users: action.payload }
+
         default:
             return state
     }
 
 };
-
-//actions 
-
-export const setLogin = (auth: boolean) => ({ type: AuthActionEnum.SET_AUTH, payload: auth })
-export const setCount = (count: number) => ({ type: AuthActionEnum.SET_COUNT, payload: count })
 
 export default authReducer;

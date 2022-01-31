@@ -1,29 +1,27 @@
-import { Layout, Row } from "antd";
+import { Card, Col, Layout, Row } from "antd";
 import React, { FC } from "react";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import loginScss from '../scss/login.module.scss'
-import { setCount, setLogin } from "../store/reducers/auth/auth";
+import LoginForm from "../components/LoginForm";
+import loginScss from "../scss/login.module.scss";
 
 const Login: FC = () => {
-  const dispatch = useDispatch();
-  const loginState = useTypedSelector((state) => state.authReducer);
-  const onLogin = () => {
-    dispatch(setLogin(!loginState.isAuth))
-  }
-  const onCounterInc = () => {
-    dispatch(setCount(loginState.counter))
-    console.log('render')
-  }
   return (
     <Layout>
       <Row justify="center" align="middle" className={loginScss.centered}>
-        <p>asd</p>
-        <button onClick={() => onLogin()}>login</button>
-        <br /><br />
-        <button onClick={() => onCounterInc()}>incr</button>
-        {loginState ? 'true' : 'false'}
-        {loginState.counter}
+        <Col span={16}>
+          <Card
+            title="Login to event"
+            extra={
+              <a
+                target="_blank"
+                href="https://6102c79279ed680017482303.mockapi.io/users"
+              >
+                Account checked
+              </a>
+            }
+          >
+            <LoginForm />
+          </Card>
+        </Col>
       </Row>
     </Layout>
   );

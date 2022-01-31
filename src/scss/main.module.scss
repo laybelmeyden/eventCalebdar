@@ -4,6 +4,20 @@
     margin-right: auto;
     margin-left: auto;
   }
+  .container__calendar{
+    margin: 40px;
+  }
+  .button__event{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  .w100{
+    width: 100% !important;
+  }
+  .left div{
+    text-align: left;
+  }
   @media (min-width: 768px) {
     .container {
       width: 750px;
